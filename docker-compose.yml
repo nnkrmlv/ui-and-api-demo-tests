@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  selenium-hub:
+    image: selenium/hub:4.15.0
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"  # Selenium Hub UI
+      - "4442:4442"  # Event Bus
+      - "4443:4443"  # Session Bus
+
+  chrome-node:
+    image: selenium/node-chrome:4.15.0
+    container_name: selenium-chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - VNC_NO_PASSWORD=1  # Enable VNC without password
+    ports:
+      - "5900:5900"  # VNC Server Port
+    shm_size: "2g"  # Prevent Chrome crashes
+
+#  firefox-node:
+#    image: selenium/node-firefox-debug:4.15.0  # Firefox with VNC
+#    container_name: selenium-firefox
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - SE_EVENT_BUS_HOST=selenium-hub
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#      - VNC_NO_PASSWORD=1
+#    ports:
+#      - "5901:5900"  # Firefox VNC Port
+#    shm_size: "2g"
