@@ -1,9 +1,7 @@
 package ui;
 
-import jdk.jfr.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,8 +12,6 @@ import java.time.Duration;
 public class InventoryPageTest extends BaseTest {
     private InventoryPage inventoryPage;
     String url = "https://www.saucedemo.com/";
-
-//    private final String url = "https://www.saucedemo.com/inventory.html";
 
     @BeforeEach
     public void loadPage() {
@@ -40,7 +36,6 @@ public class InventoryPageTest extends BaseTest {
 
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='shopping-cart-badge']")));
-
         String title = firstItem.getTitle();
         int cartCount = inventoryPage.getCartItemCount();
         Assertions.assertTrue(inventoryPage.isCartBadgeVisible(), "Cart should show item count");

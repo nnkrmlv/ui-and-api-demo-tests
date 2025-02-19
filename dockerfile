@@ -11,10 +11,6 @@ RUN mvn dependency:go-offline
 # Copy the rest of the project
 COPY . .
 
-# please review all the latest versions here:
-# https://googlechromelabs.github.io/chrome-for-testing/
-# ENV CHROMEDRIVER_VERSION=
-
 # Install required dependencies
 RUN apt-get update && apt-get install -y \
     curl \
@@ -27,13 +23,10 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
 
-# Download and install Google Chrome (Linux Version)
 RUN wget -O /tmp/chrome-mac-arm64.zip https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.98/mac-arm64/chrome-mac-arm64.zip
 RUN unzip /tmp/chrome-mac-arm64.zip -d /opt/google/
-# RUN ln -s /opt/google/chrome-mac-arm64/chrome /usr/local/bin/google-chrome
-# RUN rm /tmp/chrome-mac-arm64.zip
 
-# Verify Chrome installation
+
 RUN "/opt/google/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" --version
 
 # RUN apt-get update && apt-get install -y \

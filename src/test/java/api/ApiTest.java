@@ -11,8 +11,7 @@ import java.time.Instant;
 import static java.lang.StringTemplate.STR;
 
 
-
-public class BaseAPITest extends BaseTest {
+public class ApiTest extends BaseTest {
 
     @Test
     public void createNewUserSuccessfully() {

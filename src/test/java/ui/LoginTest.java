@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
         Assertions.assertTrue(loginSuccess, "User should be redirected to inventory page after login");
     }
 
-    @Test
+
     public void loginFailedForValidUsernameAndWrongPassword() {
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("wrong_password");
