@@ -79,11 +79,13 @@ jobs:
           exit 1
 
       # Step 5: Run UI Tests in Firefox
-      - name: Run UI Tests in Parallel (Firefox & Chrome)
+      - name: Run UI Tests in Parallel (Firefox & Chrome) and Preserve Logs
         run: |
-          mvn test -Dui.test.browser=firefox -P ui-tests &  # Run Firefox tests in background
-          mvn test -Dui.test.browser=chrome -P ui-tests &   # Run Chrome tests in background
-          wait  # Ensures both processes complete before proceeding
+          mvn test -Dui.test.browser=firefox -P ui-tests > firefox.log 2>&1 &  # Run in background, save logs
+          mvn test -Dui.test.browser=chrome -P ui-tests > chrome.log 2>&1 &   # Run in background, save logs
+          wait  # Wait for both processes to finish
+          cat firefox.log  # Display Firefox logs
+          cat chrome.log   # Display Chrome logs
 
       # Step 6: Stop Selenium Grid
       - name: Stop Selenium Grid
