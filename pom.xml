@@ -20,7 +20,7 @@
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <lombok.version>1.18.36</lombok.version>
         <maven.version>3.8.1</maven.version>
-        <maven-surefire.version>3.0.0-M7</maven-surefire.version>
+        <maven-surefire.version>3.5.2</maven-surefire.version>
     </properties>
 
 
