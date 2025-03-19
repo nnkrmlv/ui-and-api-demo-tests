@@ -71,7 +71,7 @@ jobs:
           cache: 'maven'
 
       - name: Run UI Tests in Firefox
-        run: mvn test -Dui.test.browser=firefox -P ui-tests
+        run: mvn test -Dui.test.browser=firefox -P ui-tests -X
 
   ui-tests-chrome:
     needs: setup
@@ -88,7 +88,7 @@ jobs:
           cache: 'maven'
 
       - name: Run UI Tests in Chrome
-        run: mvn test -Dui.test.browser=chrome -P ui-tests
+        run: mvn test -Dui.test.browser=chrome -P ui-tests -X
 
   cleanup:
     needs: [api-tests, ui-tests-firefox, ui-tests-chrome]
