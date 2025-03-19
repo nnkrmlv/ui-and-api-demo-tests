@@ -11,7 +11,6 @@ import java.time.Duration;
 
 public class InventoryPageTest extends BaseTest {
     private InventoryPage inventoryPage;
-    String url = "https://www.saucedemo.com/";
 
     @BeforeEach
     public void loadPage() {

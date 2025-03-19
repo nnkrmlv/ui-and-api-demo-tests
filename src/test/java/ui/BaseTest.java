@@ -6,12 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import java.net.MalformedURLException;
 
 public class BaseTest {
     protected static LoginPage loginPage;
     protected static WebDriver driver;
-
+    protected static String url = "https://www.saucedemo.com/";
     @BeforeAll
     public static void setup() {
         String browser = System.getProperty("ui.test.browser", "chrome");
